@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+	<title>Add Student Information</title>
+</head>
+<center>
+	<font color="black" size="4" style="font-family: avenir">
+
+		<h1 style="color: DodgerBlue">Student Blood Donation Information</h1>
+
+		<body bgcolor="lightgrey">
+
+			<form action="/addstd" autocomplete="on" method = "POST" enctype="multipart/form-data">
+
+				<button type="submit" formaction="/getstd" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET STUDENT INFORMATION</button><br><br>
+
+		  		Student ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="text" name="studentid" autofocus size="40"><br><br>
+
+		  		First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="firstname" ><br><br>
+
+		  		Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="lastname"><br><br>
+
+		  		Blood group:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="bloodgroup"><br><br>
+
+		  		Age:<br> <input style="height:25px;font-size:14pt;color:grey;" type="number" name="age"><br><br>
+
+		  		Major:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="major"><br><br>
+                Email:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="email"><br><br>
+                Phone:<br> <input style="height:25px;font-size:14pt;color:grey;" type="number" name="Phone"><br><br>
+                Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
+
+
+		  		<button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
+
+			</form>
+<a href="/about">About Us</a>
+		</body>
+
+	</font>
+</center>
+</html>
