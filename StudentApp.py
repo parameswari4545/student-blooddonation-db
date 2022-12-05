@@ -41,12 +41,12 @@ def AddStd():
     major = request.form['major']
     email = request.form['email']
     phone = request.form['phone']
-    image = request.files['emp_image_file']
+    emp_image_file = request.files['emp_image_file']
 
     insert_sql = "INSERT INTO STUDENT VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
-    if image.filename == "":
+    if emp_image_file.filename == "":
         return "Please select a file"
 
     try:
@@ -60,7 +60,7 @@ def AddStd():
 
         try:
             print("Data inserted in MySQL RDS... uploading image to S3...")
-            s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=image)
+            s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
             bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
             s3_location = (bucket_location['LocationConstraint'])
 
