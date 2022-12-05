@@ -1,7 +1,6 @@
+import boto3
 from flask import Flask, render_template, request
 from pymysql import connections
-import os
-import boto3
 from config import *
 
 app = Flask(__name__)
@@ -41,9 +40,9 @@ def AddStd():
     major = request.form['major']
     email = request.form['email']
     phone = request.form['phone']
-    image = request.files['image']
+    image = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO STUDENT VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO STUDENT VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if image.filename == "":
@@ -54,7 +53,7 @@ def AddStd():
         cursor.execute(insert_sql, (studentid, firstname, lastname, bloodgroup, age, major, email, phone))
         db_conn.commit()
         std_name = "" + firstname + " " + lastname
-        # Uplaod image file in S3 #
+
         emp_image_file_name_in_s3 = "studentid" + str(studentid) + "_image_file"
         s3 = boto3.resource('s3')
 
@@ -73,7 +72,7 @@ def AddStd():
                 s3_location,
                 custombucket,
                 emp_image_file_name_in_s3)
-                
+
         except Exception as e:
             return str(e)
 
